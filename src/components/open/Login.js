@@ -9,7 +9,6 @@ function Login({ closeModal }) {
   const handleSubmit = () => {
     console.log(login, password);
     console.log("Start login request.");
-
     fetch("http://localhost:8080/api/accounts/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -19,14 +18,14 @@ function Login({ closeModal }) {
       }),
     });
     closeModal(false);
-    navigate("/main", { replace: true });
+    navigate("/kmd", { replace: true });
     console.log("End register request.");
   };
 
   return (
-    <div className="logReg">
-      <div className="logRegInputs">
-        <div className="logRegInputsOne">
+    <div className="open">
+      <div className="open-inputs">
+        <div className="open-input">
           <label> Login </label>
           <input
             placeholder="Input login"
@@ -34,7 +33,7 @@ function Login({ closeModal }) {
             onChange={(event) => setLogin(event.target.value)}
           />
         </div>
-        <div className="logRegInputsOne">
+        <div className="open-input">
           <label> Password </label>
           <input
             type="password"
@@ -44,9 +43,9 @@ function Login({ closeModal }) {
           />
         </div>
       </div>
-      <div className="logRegButtons">
+      <div className="open-buttons">
         <button onClick={handleSubmit}> Send </button>
-        <button className="buttonCancel" onClick={() => closeModal(false)}>
+        <button className="button-cancel" onClick={() => closeModal(false)}>
           Cancel
         </button>
       </div>

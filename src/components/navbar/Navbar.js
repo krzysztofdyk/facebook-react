@@ -1,38 +1,44 @@
 import { Link } from "react-router-dom";
-import Question from "./openComponents/Question";
 import { useState } from "react";
+import QuestionLogout from "../open/QuestionLogout";
 
 function Navbar() {
   const [openQuestionModal, setQuestionModal] = useState(false);
 
   return (
     <div className="navbar">
-      <div className="navbarItem">
-        <Link to="/main" className="link">
-          KMD
-        </Link>
+      <div className="navbar-part">
+        <div className="navbar-part-item">
+          <Link to="/kmd" className="link">
+            KMD
+          </Link>
+        </div>
       </div>
-      <div className="navbarItem">
-        <Link to="/account" className="link">
-          Account
-        </Link>
+      <div className="navbar-part">
+        <div className="navbar-part-item">
+          <Link to="/account" className="link">
+            Account
+          </Link>
+        </div>
+        <div className="navbar-part-item">
+          <Link to="/transfer" className="link">
+            Transfer
+          </Link>
+        </div>
+        <div className="navbar-part-item">
+          <Link to="/reservation" className="link">
+            Reservation
+          </Link>
+        </div>
       </div>
-      <div className="navbarItem">
-        <Link to="/transfer" className="link">
-          Transfer
-        </Link>
-      </div>
-      <div className="navbarItem">
-        <Link to="/reservation" className="link">
-          Reservation
-        </Link>
-      </div>
-      <div className="justSpace"></div>
-      <div>
-        <button className="buttonLogout" onClick={() => setQuestionModal(true)}>
-          Logout
-        </button>
-        {openQuestionModal && <Question closeModal={setQuestionModal} />}
+
+      <div className="navbar-part">
+        <div>
+          <button className="button-logout" onClick={() => setQuestionModal(true)}>
+            Logout
+          </button>
+          {openQuestionModal && <QuestionLogout closeModal={setQuestionModal} />}
+        </div>
       </div>
     </div>
   );

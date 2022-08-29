@@ -28,14 +28,14 @@ function Register({ closeModal }) {
       }),
     });
     closeModal(false);
-    navigate("/main", { replace: true });
+    navigate("/kmd", { replace: true });
     console.log("End register request.");
   };
 
   return (
-    <div className="logReg">
-      <div className="logRegInputs">
-        <div className="logRegInputsOne">
+    <div className="open">
+      <div className="open-inputs">
+        <div className="open-input">
           <label> First Name </label>
           <input
             placeholder="Input first name"
@@ -43,7 +43,7 @@ function Register({ closeModal }) {
             onChange={(event) => setFirstName(event.target.value)}
           />
         </div>
-        <div className="logRegInputsOne">
+        <div className="open-input">
           <label> Last Name </label>
           <input
             placeholder="Input last name"
@@ -51,7 +51,7 @@ function Register({ closeModal }) {
             onChange={(event) => setLastName(event.target.value)}
           />
         </div>
-        <div className="logRegInputsOne">
+        <div className="open-input">
           <label> Email </label>
           <input
             placeholder="Input email"
@@ -59,7 +59,7 @@ function Register({ closeModal }) {
             onChange={(event) => setEmail(event.target.value)}
           />
         </div>
-        <div className="logRegInputsOne">
+        <div className="open-input">
           <label> City </label>
           <input
             placeholder="Input city"
@@ -67,7 +67,7 @@ function Register({ closeModal }) {
             onChange={(event) => setCity(event.target.value)}
           />
         </div>
-        <div className="logRegInputsOne">
+        <div className="open-input">
           <label> Login </label>
           <input
             placeholder="Input login"
@@ -75,7 +75,7 @@ function Register({ closeModal }) {
             onChange={(event) => setLogin(event.target.value)}
           />
         </div>
-        <div className="logRegInputsOne">
+        <div className="open-input">
           <label> Password </label>
           <input
             type="password"
@@ -84,7 +84,7 @@ function Register({ closeModal }) {
             onChange={(event) => setPassword(event.target.value)}
           />
         </div>
-        <div className="logRegInputsOne">
+        <div className="open-input">
           <label> Repeat Password </label>
           <input
             type="password"
@@ -94,9 +94,9 @@ function Register({ closeModal }) {
           />
         </div>
       </div>
-      <div className="logRegButtons">
+      <div className="open-buttons">
         <button onClick={handleSubmit}>Send</button>
-        <button className="buttonCancel" onClick={() => closeModal(false)}>
+        <button className="button-cancel" onClick={() => closeModal(false)}>
           Cancel
         </button>
       </div>

@@ -1,7 +1,7 @@
 import { useState } from "react";
-import Login from "../../components/Open/Login";
-import Register from "../../components/Open/Register";
-import Footer from "../../components/Footer";
+import Login from "../../components/open/Login";
+import Register from "../../components/open/Register";
+import Footer from "../../components/footer/Footer";
 
 function Welcome() {
   const [openLoginModal, setOpenLoginModal] = useState(false);
@@ -11,25 +11,27 @@ function Welcome() {
     setOpenLoginModal(true);
     setOpenRegisterModal(false);
   }
-  function handleRegisterLoginModal() {
+  function handleOpenRegisterModal() {
     setOpenLoginModal(false);
     setOpenRegisterModal(true);
   }
 
   return (
-    <div className="container">
+    <div className="page">
       <div className="header"></div>
       <div className="body">
-        <div className="bodyText">
-          <p>Hello, everything You need to do is log in!</p>
-          <p>Enjoy and have a fun! :)</p>
+        <div className="body-content">
+          <div className="body-text">
+            <p>Hello, everything You need to do is log in!</p>
+            <p>Enjoy and have a fun! :)</p>
+          </div>
+          <div className="body-action-welcome">
+            <button onClick={handleOpenLoginModal}>Login</button>
+            <button onClick={handleOpenRegisterModal}>Register</button>
+          </div>
+          {openLoginModal && <Login closeModal={setOpenLoginModal} />}
+          {openRegisterModal && <Register closeModal={setOpenRegisterModal} />}
         </div>
-        <div className="welcomeButtons">
-          <button onClick={handleOpenLoginModal}>Login</button>
-          <button onClick={handleRegisterLoginModal}>Register</button>
-        </div>
-        {openLoginModal && <Login closeModal={setOpenLoginModal} />}
-        {openRegisterModal && <Register closeModal={setOpenRegisterModal} />}
       </div>
       <div className="footer">
         <Footer />

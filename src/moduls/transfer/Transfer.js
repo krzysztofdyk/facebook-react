@@ -1,9 +1,9 @@
-import Navbar from "../../Components/Navbar";
+import Navbar from "../../components/navbar/Navbar";
 import Footer from "../../components/footer/Footer";
 
 function Transfer() {
   return (
-    <div className="container">
+    <div className="page">
       <div className="header">
         <Navbar />
       </div>

@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 
-function Question({ closeModal }) {
+function QuestionDelete({ closeModal }) {
   const navigate = useNavigate();
 
   const handleSubmit = () => {
@@ -10,13 +10,13 @@ function Question({ closeModal }) {
   };
 
   return (
-    <div className="question">
-      <div className="logRegInputs">
-        <h4>Do You really want to leave ?</h4>
+    <div className="open">
+      <div className="open-input">
+        <h3>Do You want to delete your account from our service ?</h3>
       </div>
-      <div className="logRegButtons">
+      <div>
         <button onClick={handleSubmit}> Yes </button>
-        <button className="buttonCancel" onClick={() => closeModal(false)}>
+        <button className="button-cancel" onClick={() => closeModal(false)}>
           Cancel
         </button>
       </div>
@@ -24,4 +24,4 @@ function Question({ closeModal }) {
   );
 }
 
-export default Question;
+export default QuestionDelete;

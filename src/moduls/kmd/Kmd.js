@@ -1,13 +1,20 @@
 import Navbar from "../../components/navbar/Navbar";
 import Footer from "../../components/footer/Footer";
 
-function Reservation() {
+function Kmd() {
   return (
     <div className="page">
       <div className="header">
         <Navbar />
       </div>
-      <div className="body"></div>
+      <div className="body">
+        <div className="body-content">
+          <div className="body-text">
+            <p>So happy to see You </p>
+            <p>Have a fun ! :)</p>
+          </div>
+        </div>
+      </div>
 
       <div className="footer">
         <Footer />
@@ -16,4 +23,4 @@ function Reservation() {
   );
 }
 
-export default Reservation;
+export default Kmd;

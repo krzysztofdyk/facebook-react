@@ -19,9 +19,9 @@ function ChangePassword({ closeModal }) {
   };
 
   return (
-    <div className="logReg">
-      <div className="logRegInputs">
-        <div className="logRegInputsOne">
+    <div className="open">
+      <div className="open-input">
+        <div className="open-input">
           <label> Password </label>
           <input
             type="password"
@@ -30,7 +30,7 @@ function ChangePassword({ closeModal }) {
             onChange={(event) => setPassword(event.target.value)}
           />
         </div>
-        <div className="logRegInputsOne">
+        <div className="open-input">
           <label> Repeat Password </label>
           <input
             type="password"
@@ -40,9 +40,9 @@ function ChangePassword({ closeModal }) {
           />
         </div>
       </div>
-      <div className="logRegButtons">
+      <div className="open-buttons">
         <button onClick={handleSubmit}>Send</button>
-        <button className="buttonCancel" onClick={() => closeModal(false)}>
+        <button className="button-cancel" onClick={() => closeModal(false)}>
           Cancel
         </button>
       </div>
