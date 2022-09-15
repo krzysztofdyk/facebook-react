@@ -8,8 +8,8 @@ import QuestionDelete from "../../components/open/QuestionDelete";
 
 function Account() {
   const [openEditAccountModal, setEditAccountModal] = useState(false);
-  const [changePasswordModal, setChangePasswordModal] = useState(false);
-  const [openQuestionDelete, setOpenQuestionDelete] = useState(false);
+  const [openChangePasswordModal, setChangePasswordModal] = useState(false);
+  const [openQuestionDeleteModal, setOpenQuestionDeleteModal] = useState(false);
 
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -21,19 +21,19 @@ function Account() {
   function handleOpenEditAccountModal() {
     setEditAccountModal(true);
     setChangePasswordModal(false);
-    setOpenQuestionDelete(false);
+    setOpenQuestionDeleteModal(false);
   }
 
   function handleOpenChangePasswordModal() {
     setEditAccountModal(false);
     setChangePasswordModal(true);
-    setOpenQuestionDelete(false);
+    setOpenQuestionDeleteModal(false);
   }
 
   function handleOpenQuestionDeleteModal() {
     setEditAccountModal(false);
     setChangePasswordModal(false);
-    setOpenQuestionDelete(true);
+    setOpenQuestionDeleteModal(true);
   }
 
   useEffect(() => {
@@ -107,8 +107,8 @@ function Account() {
             id={id}
           />
         )}
-        {changePasswordModal && <ChangePassword closeModal={setChangePasswordModal} />}
-        {openQuestionDelete && <QuestionDelete closeModal={setOpenQuestionDelete} />}
+        {openChangePasswordModal && <ChangePassword closeModal={setChangePasswordModal} />}
+        {openQuestionDeleteModal && <QuestionDelete closeModal={setOpenQuestionDeleteModal} />}
       </div>
       <div className="footer">
         <Footer />

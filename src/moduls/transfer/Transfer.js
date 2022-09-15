@@ -8,7 +8,14 @@ function Transfer() {
         <Navbar />
       </div>
       <div className="body"></div>
-
+      <div className="body-action">
+        <div className="body-action-item">
+          <button>Edit </button>
+        </div>
+      </div>
+      <div className="body-content">
+        <div className="account-inputs"></div>
+      </div>
       <div className="footer">
         <Footer />
       </div>

@@ -6,6 +6,7 @@ function QuestionLogout({ closeModal }) {
   const handleSubmit = () => {
     console.log("Start");
     navigate("/logout", { replace: true });
+    localStorage.setItem("accountId", null);
     console.log("End");
   };
 
