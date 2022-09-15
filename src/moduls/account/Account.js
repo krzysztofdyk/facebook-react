@@ -16,6 +16,7 @@ function Account() {
   const [email, setEmail] = useState("");
   const [city, setCity] = useState("");
   const [id, setId] = useState(0);
+  const [balance, setBalance] = useState("");
 
   function handleOpenEditAccountModal() {
     setEditAccountModal(true);
@@ -37,15 +38,20 @@ function Account() {
 
   useEffect(() => {
     const fetchAccount = ({ id }) => {
-      axios.get(`http://localhost:8080/api/accounts/${id}`).then(({ data }) => {
-        setFirstName(data.firstName);
-        setLastName(data.lastName);
-        setEmail(data.email);
-        setCity(data.city);
-        setId(data.id);
-      });
+      axios
+        .get(`http://localhost:8080/api/accounts/${id}`, {
+          headers: { Authorization: "Bearer " + localStorage.getItem("token") },
+        })
+        .then(({ data }) => {
+          setFirstName(data.firstName);
+          setLastName(data.lastName);
+          setEmail(data.email);
+          setCity(data.city);
+          setId(data.id);
+          setBalance(data.balance);
+        });
     };
-    fetchAccount({ id: 1 });
+    fetchAccount({ id: localStorage.getItem("accountId") });
   }, []);
 
   return (
@@ -84,6 +90,10 @@ function Account() {
             <div className="account-input">
               <div className="field-1"> City </div>
               <div className="field-2">{city}</div>
+            </div>
+            <div className="account-input">
+              <div className="field-1"> Balance </div>
+              <div className="field-2">{balance}</div>
             </div>
           </div>
         </div>

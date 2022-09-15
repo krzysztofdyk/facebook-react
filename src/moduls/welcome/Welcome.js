@@ -27,7 +27,9 @@ function Welcome() {
           </div>
           <div className="body-action-welcome">
             <button onClick={handleOpenLoginModal}>Login</button>
-            <button onClick={handleOpenRegisterModal}>Register</button>
+            <button className="button-register" onClick={handleOpenRegisterModal}>
+              Register
+            </button>
           </div>
           {openLoginModal && <Login closeModal={setOpenLoginModal} />}
           {openRegisterModal && <Register closeModal={setOpenRegisterModal} />}

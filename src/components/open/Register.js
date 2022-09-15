@@ -16,7 +16,10 @@ function Register({ closeModal }) {
     console.log("Start register request.");
     fetch("http://localhost:8080/api/accounts", {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + localStorage.getItem("token"),
+      },
       body: JSON.stringify({
         firstName,
         lastName,
@@ -28,7 +31,7 @@ function Register({ closeModal }) {
       }),
     });
     closeModal(false);
-    navigate("/kmd", { replace: true });
+    //navigate("/kmd", { replace: true });
     console.log("End register request.");
   };
 

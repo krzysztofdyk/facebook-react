@@ -9,16 +9,29 @@ function Login({ closeModal }) {
   const handleSubmit = () => {
     console.log(login, password);
     console.log("Start login request.");
-    fetch("http://localhost:8080/api/accounts/login", {
+    fetch("http://localhost:8080/authenticate", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         login,
         password,
       }),
-    });
-    closeModal(false);
-    navigate("/kmd", { replace: true });
+    })
+      .then((response) => response.json())
+      .then((json) => {
+        console.log(json.jwtToken);
+        localStorage.setItem("token", json.jwtToken);
+        console.log(json.id);
+        localStorage.setItem("accountId", json.id);
+      });
+
+    if (login !== "" && password !== "") {
+      navigate("/kmd", { replace: true });
+    }
+    if (login === "" && password === "") {
+      closeModal(true);
+    }
+
     console.log("End register request.");
   };
 

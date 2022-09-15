@@ -3,7 +3,7 @@
 /* base styles */
 * {
   margin: 0;
-  font-family: "Quicksand";
+  font-family: "Arial";
   color: #333;
 }
 
@@ -69,6 +69,10 @@ button {
   border-radius: 4px;
   box-shadow: 5px 10px 18px black;
   float: left;
+}
+
+.button-register {
+  background-color: rgb(253, 192, 78);
 }
 
 .button-cancel {

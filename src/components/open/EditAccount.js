@@ -11,7 +11,10 @@ function EditAccount(props) {
     console.log(firstName, lastName, email, city);
     fetch(`http://localhost:8080/api/accounts/${props.id}`, {
       method: "PUT",
-      headers: { "Content-Type": "application/json" },
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + localStorage.getItem("token"),
+      },
       body: JSON.stringify({
         firstName,
         lastName,
