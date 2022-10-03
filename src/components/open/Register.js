@@ -17,8 +17,7 @@ function Register({ closeModal }) {
     fetch("http://localhost:8080/api/accounts", {
       method: "POST",
       headers: {
-        "Content-Type": "application/json",
-        Authorization: "Bearer " + localStorage.getItem("token"),
+        "Content-Type": "application/json"       
       },
       body: JSON.stringify({
         firstName,

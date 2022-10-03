@@ -6,37 +6,56 @@ function Login({ closeModal }) {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
-  const handleSubmit = () => {
-    console.log(login, password);
-    console.log("Start login request.");
-    fetch("http://localhost:8080/authenticate", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        login,
-        password,
-      }),
-    })
-      .then((response) => response.json())
-      .then((json) => {
-        console.log(json.jwtToken);
-        localStorage.setItem("token", json.jwtToken);
-        console.log(json.id);
-        localStorage.setItem("accountId", json.id);
-      });
-
-    if (login !== "" && password !== "") {
-      navigate("/kmd", { replace: true });
-    }
-    if (login === "" && password === "") {
+  const handleSubmit = async() => {
+    console.log("Start login request: ", login, password);
+    try{
+      const response = await fetch("http://localhost:8080/authenticate", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          login,
+          password,
+        }),
+      })
+      const json = await response.json()
+      localStorage.setItem("token", json.jwtToken);
+      console.log(json.id);
+      localStorage.setItem("accountId", json.id);
       closeModal(true);
+      navigate("/kmd", { replace: true });      
+    }catch(err){
+      console.warn(err)
     }
+    // fetch("http://localhost:8080/authenticate", {
+    //   method: "POST",
+    //   headers: { "Content-Type": "application/json" },
+    //   body: JSON.stringify({
+    //     login,
+    //     password,
+    //   }),
+    // })
+    //   .then((response) => response.json())
+    //   .then((json) => {
+    //     console.log(json.jwtToken);
+    //     localStorage.setItem("token", json.jwtToken);
+    //     console.log(json.id);
+    //     localStorage.setItem("accountId", json.id);
+    //   }).catch((error)=>{console.warn(error)});
 
-    console.log("End register request.");
+    // if (login !== "" && password !== "") {
+    //   navigate("/kmd", { replace: true });
+    // }
+    // if (login === "" && password === "") {
+    //   closeModal(true);
+    // }
+    console.log("End login request.");
   };
 
   return (
     <div className="open">
+      <div className="open-header" onClick={()=>closeModal(false)} >
+        X
+      </div>
       <div className="open-inputs">
         <div className="open-input">
           <label> Login </label>
