@@ -4,7 +4,7 @@ function Footer() {
       <div>
         {true && "Hello by KMD. "}
         {false && "nothing"}
-        {"Version: " + Math.random()}
+        {"Version: 1.0"}
       </div>
     </div>
   );

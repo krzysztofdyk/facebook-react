@@ -7,7 +7,11 @@ function Reservation() {
       <div className="header">
         <Navbar />
       </div>
-      <div className="body"></div>
+      <div className="body">
+        <div className="body-action-item">
+          <button>Send</button>
+        </div>
+      </div>
 
       <div className="footer">
         <Footer />
