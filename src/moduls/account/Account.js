@@ -60,18 +60,12 @@ function Account() {
         <Navbar />
       </div>
       <div className="body">
-        <div className="body-action">
-          <div className="body-action-item">
-            <button className="button-cancel" onClick={handleOpenQuestionDeleteModal}>
-              Delete
-            </button>
-          </div>
-          <div className="body-action-item">
-            <button onClick={handleOpenChangePasswordModal}>Change password </button>
-          </div>
-          <div className="body-action-item">
-            <button onClick={handleOpenEditAccountModal}>Edit </button>
-          </div>
+        <div className="body-buttons">
+          <button className="button-cancel" onClick={handleOpenQuestionDeleteModal}>
+            Delete
+          </button>
+          <button onClick={handleOpenChangePasswordModal}>Change password </button>
+          <button onClick={handleOpenEditAccountModal}>Edit </button>
         </div>
         <div className="body-content">
           <div className="account-inputs">
@@ -80,19 +74,19 @@ function Account() {
               <div className="field-2">{firstName}</div>
             </div>
             <div className="account-input">
-              <div className="field-1"> Last Name </div>
+              <div className="field-1"> Last Name: </div>
               <div className="field-2">{lastName}</div>
             </div>
             <div className="account-input">
-              <div className="field-1">Email </div>
+              <div className="field-1">Email: </div>
               <div className="field-2">{email}</div>
             </div>
             <div className="account-input">
-              <div className="field-1"> City </div>
+              <div className="field-1"> City: </div>
               <div className="field-2">{city}</div>
             </div>
             <div className="account-input">
-              <div className="field-1"> Balance </div>
+              <div className="field-1"> Balance: </div>
               <div className="field-2">{balance}</div>
             </div>
           </div>

@@ -6,9 +6,9 @@ function Login({ closeModal }) {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
-  const handleSubmit = async() => {
+  const handleSubmit = async () => {
     console.log("Start login request: ", login, password);
-    try{
+    try {
       const response = await fetch("http://localhost:8080/authenticate", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -16,15 +16,15 @@ function Login({ closeModal }) {
           login,
           password,
         }),
-      })
-      const json = await response.json()
+      });
+      const json = await response.json();
       localStorage.setItem("token", json.jwtToken);
       console.log(json.id);
       localStorage.setItem("accountId", json.id);
       closeModal(true);
-      navigate("/kmd", { replace: true });      
-    }catch(err){
-      console.warn(err)
+      navigate("/kmd", { replace: true });
+    } catch (err) {
+      console.warn(err);
     }
     // fetch("http://localhost:8080/authenticate", {
     //   method: "POST",
@@ -53,7 +53,7 @@ function Login({ closeModal }) {
 
   return (
     <div className="open">
-      <div className="open-header" onClick={()=>closeModal(false)} >
+      <div className="open-header" onClick={() => closeModal(false)}>
         X
       </div>
       <div className="open-inputs">
@@ -76,7 +76,7 @@ function Login({ closeModal }) {
         </div>
       </div>
       <div className="open-buttons">
-        <button onClick={handleSubmit}> Send </button>
+        <button onClick={handleSubmit}> Save </button>
         <button className="button-cancel" onClick={() => closeModal(false)}>
           Cancel
         </button>

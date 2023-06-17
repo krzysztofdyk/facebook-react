@@ -48,7 +48,7 @@ function EditAccount(props) {
         </div>
       </div>
       <div className="open-buttons">
-        <button onClick={fetchAccount}>Send</button>
+        <button onClick={fetchAccount}>Save</button>
         <button className="button-cancel" onClick={() => props.closeModal(false)}>
           Cancel
         </button>

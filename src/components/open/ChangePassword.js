@@ -41,7 +41,7 @@ function ChangePassword({ closeModal }) {
         </div>
       </div>
       <div className="open-buttons">
-        <button onClick={handleSubmit}>Send</button>
+        <button onClick={handleSubmit}>Save</button>
         <button className="button-cancel" onClick={() => closeModal(false)}>
           Cancel
         </button>

@@ -2,7 +2,7 @@
 
 /* base styles */
 * {
-  margin: 0;
+  margin: 5;
   font-family: "Arial";
   color: #333;
 }
@@ -35,16 +35,14 @@
   justify-content: center;
 }
 
-.body-action {
+.body-buttons {
   padding-left: 20px;
   padding-right: 20px;
   background-color: white;
   border-radius: 8px;
   height: 100%;
 }
-.body-action-item {
-  float: right;
-}
+
 .body-content {
   display: flex;
   background-color: rgb(253, 192, 78);
@@ -53,7 +51,6 @@
   margin: 20px;
   border-radius: 8px;
 }
-
 
 /*BUTTONS*/
 
@@ -68,8 +65,8 @@ button {
   margin: 10px;
   cursor: pointer;
   border-radius: 4px;
-  box-shadow: 5px 10px 18px black;
-  float: left;
+  box-shadow: 0px 10px 18px black;
+  float: right;
 }
 
 .button-register {
@@ -88,13 +85,12 @@ button {
 }
 
 .button-logout:hover {
-  background-color: #333;
   color: white;
-
 }
 
 button:hover {
-  opacity: 0.8;
+  background-color: black;
+  box-shadow: none;
 }
 
 /*OPEN in COMPONENTS*/
@@ -114,20 +110,18 @@ button:hover {
   font-weight: bold;
 }
 
-.open-header{
+.open-header {
   font-size: 25px;
   font-weight: bold;
-  cursor: pointer; 
-  margin-top: 5px;  
+  cursor: pointer;
+  margin-top: 5px;
   position: absolute;
   right: 50px;
 }
 
-.open-header:hover{
-  color: #4caf50;  
+.open-header:hover {
+  color: #4caf50;
 }
-
-
 
 .open-inputs {
   padding: 20px;
@@ -138,13 +132,14 @@ button:hover {
 .open-input {
   display: flex;
   flex-direction: column;
-  padding: 10px;
+  padding: 5px;
   width: 400px;
 }
 
 .open-input > input {
   padding: 10px;
   font-size: 20px;
+  border: 0.25px solid gray;
 }
 
 .open-buttons {

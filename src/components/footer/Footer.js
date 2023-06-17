@@ -2,7 +2,7 @@ function Footer() {
   return (
     <div className="foobar">
       <div>
-        {true && "Hello by KMD. "}
+        {true && "Service by Krzysztof Dyk. "}
         {false && "nothing"}
         {"Version: 1.0"}
       </div>

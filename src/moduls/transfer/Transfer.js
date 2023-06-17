@@ -8,10 +8,10 @@ function Transfer() {
         <Navbar />
       </div>
       <div className="body"></div>
-      <div className="body-action">
-        <div className="body-action-item">
-          <button>Edit </button>
-        </div>
+      <div className="body-buttons">
+        <button className="button-cancel">Delete</button>
+        <button>Edit </button>
+        <button>Create transfer </button>
       </div>
       <div className="body-content">
         <div className="account-inputs"></div>
