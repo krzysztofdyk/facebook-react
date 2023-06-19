@@ -1,10 +1,14 @@
-# FACEBOOK-REACT
+# RUN !
 
 1. Extensions:
 
 - Css Peak
 - Rainbow Brackets
 -
+
+2. How to run:
+
+- npm run start
 
 # Getting Started with Create React App
 

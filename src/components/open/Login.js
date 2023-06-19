@@ -26,28 +26,6 @@ function Login({ closeModal }) {
     } catch (err) {
       console.warn(err);
     }
-    // fetch("http://localhost:8080/authenticate", {
-    //   method: "POST",
-    //   headers: { "Content-Type": "application/json" },
-    //   body: JSON.stringify({
-    //     login,
-    //     password,
-    //   }),
-    // })
-    //   .then((response) => response.json())
-    //   .then((json) => {
-    //     console.log(json.jwtToken);
-    //     localStorage.setItem("token", json.jwtToken);
-    //     console.log(json.id);
-    //     localStorage.setItem("accountId", json.id);
-    //   }).catch((error)=>{console.warn(error)});
-
-    // if (login !== "" && password !== "") {
-    //   navigate("/kmd", { replace: true });
-    // }
-    // if (login === "" && password === "") {
-    //   closeModal(true);
-    // }
     console.log("End login request.");
   };
 
