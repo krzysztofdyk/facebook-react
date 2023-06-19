@@ -13,7 +13,7 @@ function EditAccount(props) {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
-        Authorization: "Bearer " + localStorage.getItem("token"),
+        Authorization: "Bearer " + localStorage.getItem("tokenCookie"),
       },
       body: JSON.stringify({
         firstName,

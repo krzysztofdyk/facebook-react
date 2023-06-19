@@ -37,10 +37,10 @@ function Account() {
   }
 
   useEffect(() => {
-    const fetchAccount = ({ id }) => {
+    const fetchAccount = ({ loginVisual }) => {
       axios
-        .get(`http://localhost:8080/api/accounts/${id}`, {
-          headers: { Authorization: "Bearer " + localStorage.getItem("token") },
+        .get(`http://localhost:8080/api/accounts/${loginVisual}`, {
+          headers: { Authorization: "Bearer " + localStorage.getItem("tokenCookie") },
         })
         .then(({ data }) => {
           setFirstName(data.firstName);
@@ -51,7 +51,7 @@ function Account() {
           setBalance(data.balance);
         });
     };
-    fetchAccount({ id: localStorage.getItem("accountId") });
+    fetchAccount({ loginVisual: localStorage.getItem("loginCookie") });
   }, []);
 
   return (

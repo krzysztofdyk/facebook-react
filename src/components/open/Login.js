@@ -18,9 +18,11 @@ function Login({ closeModal }) {
         }),
       });
       const json = await response.json();
-      localStorage.setItem("token", json.jwtToken);
+      localStorage.setItem("tokenCookie", json.jwtTokenJava);
+      console.log(json.jwtToken);
+      localStorage.setItem("loginCookie", json.loginJava);
       console.log(json.id);
-      localStorage.setItem("accountId", json.id);
+      localStorage.setItem("idCookie", json.idJava);
       closeModal(true);
       navigate("/kmd", { replace: true });
     } catch (err) {

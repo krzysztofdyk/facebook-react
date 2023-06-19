@@ -12,11 +12,13 @@ function CreateTransfer(props) {
     console.log("Start transfer.");
     console.log(`${props.id}`);
 
-    fetch(`http://localhost:8080/transfers/${props.id}`, {
+    const accountId = localStorage.getItem("idCookie");
+
+    fetch(`http://localhost:8080/transfers/${accountId}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: "Bearer " + localStorage.getItem("token"),
+        Authorization: "Bearer " + localStorage.getItem("tokenCookie"),
       },
       body: JSON.stringify({
         title,
