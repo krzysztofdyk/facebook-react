@@ -4,7 +4,7 @@
 
 - Css Peak
 - Rainbow Brackets
--
+- npm install add react-table
 
 2. How to run:
 
