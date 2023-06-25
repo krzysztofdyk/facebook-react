@@ -56,7 +56,7 @@ function Login({ closeModal }) {
         </div>
       </div>
       <div className="open-buttons">
-        <button onClick={handleSubmit}> Save </button>
+        <button onClick={handleSubmit}> Send </button>
         <button className="button-cancel" onClick={() => closeModal(false)}>
           Cancel
         </button>

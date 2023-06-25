@@ -51,6 +51,8 @@ function Account() {
           setBalance(data.balance);
         });
     };
+    console.log("fetchAccount");
+    console.log({ firstName });
     fetchAccount({ loginVisual: localStorage.getItem("loginCookie") });
   }, []);
 

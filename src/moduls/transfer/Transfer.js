@@ -1,14 +1,15 @@
 import Navbar from "../../components/navbar/Navbar";
 import Footer from "../../components/footer/Footer";
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 import QuestionDelete from "../../components/open/QuestionDelete";
 import CreateTransfer from "../../components/open/CreateTransfer";
+import axios from "axios";
 
 function Transfer() {
   const [openCreateTransferModal, setCreateTransferModal] = useState(false);
   const [openEditTarnsferModal, setEditTransferModal] = useState(false);
   const [openQuestionDeleteModal, setOpenQuestionDeleteModal] = useState(false);
-  const [responseData, setResponseDat] = useState([]);
+  const [responseData, setResponseData] = useState([]);
 
   function handleCreateTransferModal() {
     setCreateTransferModal(true);
@@ -28,6 +29,42 @@ function Transfer() {
     setOpenQuestionDeleteModal(true);
   }
 
+  const myTransfer = responseData[0];
+
+  // useEffect(() => {
+  //   const getTransfers = () => {
+  //     fetch(`http://localhost:8080/transfers`, {
+  //       method: "GET",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //         Authorization: "Bearer " + localStorage.getItem("tokenCookie"),
+  //       },
+  //     })
+  //       .then((response) => response.json())
+  //       .then((data) => setResponseData(data));
+
+  //     console.log("Transfers list: start");
+  //     console.log(responseData[0]);
+  //     console.log(responseData[0].amount);
+  //     console.log("Transfers list: end");
+  //   };
+  //   getTransfers();
+  // }, []);
+
+  // useEffect(() => {
+  //   const fetchTransfers = () => {
+  //     axios
+  //       .get(`http://localhost:8080/transfers`, {
+  //         headers: { Authorization: "Bearer " + localStorage.getItem("tokenCookie") },
+  //       })
+  //       .then((data) => setResponseData(data));
+  //   };
+  //   console.log("Transfers list: start");
+  //   console.log(responseData[0]);
+  //   console.log("Transfers list: end");
+  //   fetchTransfers();
+  // }, []);
+
   const getTransfers = () => {
     fetch(`http://localhost:8080/transfers`, {
       method: "GET",
@@ -35,34 +72,15 @@ function Transfer() {
         "Content-Type": "application/json",
         Authorization: "Bearer " + localStorage.getItem("tokenCookie"),
       },
-    }).then((data) => setResponseDat(data));
-    console.log("Start showing the transfers");
-    console.log({ responseData });
-    console.log("Stop showing the transfers");
-  };
+    })
+      .then((response) => response.json())
+      .then((data) => setResponseData(data));
 
-  const exampleResponse = [
-    {
-      id: "1",
-      title: "pizza",
-      amount: "100",
-      currency: "PLN",
-      sender: "Kris",
-      receiver: "Anna",
-      date: "2022-10-15",
-      time: "20:09",
-    },
-    {
-      id: "2",
-      title: "kino",
-      amount: "100",
-      currency: "PLN",
-      sender: "Kris",
-      receiver: "Anna",
-      date: "2022-10-15",
-      time: "20:09",
-    },
-  ];
+    console.log("Transfers list: start");
+    console.log(responseData[0]);
+    console.log(responseData[0].amount);
+    console.log("Transfers list: end");
+  };
 
   return (
     <div className="page">
@@ -74,7 +92,7 @@ function Transfer() {
           <button className="button-cancel" onClick={handleOpenQuestionDeleteModal}>
             Delete
           </button>
-          <button onClick={getTransfers}>Get Transfers </button>
+          <button onClick={getTransfers()}>Get Transfers </button>
           <button onClick={handleCreateTransferModal}>Create transfer </button>
         </div>
         <div className="body-content">
@@ -93,26 +111,11 @@ function Transfer() {
                     <th>Time</th>
                   </tr>
                 </thead>
-                {() => {
-                  responseData.forEach((transferObject) => {
-                    transferObject.map((val, key) => {
-                      return (
-                        <tbody>
-                          <tr key={key}>
-                            <td>{val.id}</td>
-                            <td>{val.title}</td>
-                            <td>{val.amount}</td>
-                            <td>{val.currency}</td>
-                            <td>{val.sender}</td>
-                            <td>{val.receiver}</td>
-                            <td>{val.date}</td>
-                            <td>{val.time}</td>
-                          </tr>
-                        </tbody>
-                      );
-                    });
-                  });
-                }}
+                <tbody>
+                  <tr>
+                    <td>{responseData.amount}</td>
+                  </tr>
+                </tbody>
               </table>
             </div>
           </div>
