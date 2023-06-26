@@ -113,8 +113,8 @@ function Transfer() {
                             <td>{currency}</td>
                             <td>{fromAccountId}</td>
                             <td>{toAccountId}</td>
-                            <td>{date}</td>
-                            <td>{time}</td>
+                            <td>{Date.parse(date)}</td>
+                            <td>{toString.apply(time)}</td>
                           </tr>
                         ),
                       )
