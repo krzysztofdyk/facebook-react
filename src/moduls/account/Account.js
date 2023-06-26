@@ -38,9 +38,10 @@ function Account() {
 
   useEffect(() => {
     const fetchAccount = ({ loginVisual }) => {
+      const token = localStorage.getItem("tokenCookie");
       axios
         .get(`http://localhost:8080/api/accounts/${loginVisual}`, {
-          headers: { Authorization: "Bearer " + localStorage.getItem("tokenCookie") },
+          headers: { Authorization: "Bearer " + token },
         })
         .then(({ data }) => {
           setFirstName(data.firstName);
@@ -51,9 +52,8 @@ function Account() {
           setBalance(data.balance);
         });
     };
-    console.log("fetchAccount");
-    console.log({ firstName });
-    fetchAccount({ loginVisual: localStorage.getItem("loginCookie") });
+    const loginCookie = localStorage.getItem("loginCookie");
+    fetchAccount({ loginVisual: loginCookie });
   }, []);
 
   return (
@@ -69,7 +69,7 @@ function Account() {
           <button onClick={handleOpenChangePasswordModal}>Change password </button>
           <button onClick={handleOpenEditAccountModal}>Edit </button>
         </div>
-        <div className="body-content">
+        <div className="account-body-content">
           <div className="account-inputs">
             <div className="account-input">
               <div className="field-1"> First Name: </div>

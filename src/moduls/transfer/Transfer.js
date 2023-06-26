@@ -10,6 +10,7 @@ function Transfer() {
   const [openEditTarnsferModal, setEditTransferModal] = useState(false);
   const [openQuestionDeleteModal, setOpenQuestionDeleteModal] = useState(false);
   const [responseData, setResponseData] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   function handleCreateTransferModal() {
     setCreateTransferModal(true);
@@ -29,58 +30,36 @@ function Transfer() {
     setOpenQuestionDeleteModal(true);
   }
 
-  const myTransfer = responseData[0];
-
-  // useEffect(() => {
-  //   const getTransfers = () => {
-  //     fetch(`http://localhost:8080/transfers`, {
-  //       method: "GET",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //         Authorization: "Bearer " + localStorage.getItem("tokenCookie"),
-  //       },
-  //     })
-  //       .then((response) => response.json())
-  //       .then((data) => setResponseData(data));
-
-  //     console.log("Transfers list: start");
-  //     console.log(responseData[0]);
-  //     console.log(responseData[0].amount);
-  //     console.log("Transfers list: end");
-  //   };
-  //   getTransfers();
-  // }, []);
-
-  // useEffect(() => {
-  //   const fetchTransfers = () => {
-  //     axios
+  // const getTransfers = useCallback(() => {
+  //   const token = localStorage.getItem("tokenCookie")
+  //   axios
   //       .get(`http://localhost:8080/transfers`, {
-  //         headers: { Authorization: "Bearer " + localStorage.getItem("tokenCookie") },
+  //         headers: { Authorization: "Bearer " + token },
   //       })
-  //       .then((data) => setResponseData(data));
-  //   };
-  //   console.log("Transfers list: start");
-  //   console.log(responseData[0]);
-  //   console.log("Transfers list: end");
-  //   fetchTransfers();
-  // }, []);
+  //       .then(({data}) => setResponseData(data))
+  //       // .then((res) => setResponseData(res.data))
+  //       .catch((err) => console.error(err));
+  // // [] - renders only on init
+  // // [variable] - renders only when variable changes/updates
+  // }, [])
 
-  const getTransfers = () => {
-    fetch(`http://localhost:8080/transfers`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: "Bearer " + localStorage.getItem("tokenCookie"),
-      },
-    })
-      .then((response) => response.json())
-      .then((data) => setResponseData(data));
+  useEffect(() => {
+    // getTransfers() -> add function to dependencies array and remove below token with axios
 
-    console.log("Transfers list: start");
-    console.log(responseData[0]);
-    console.log(responseData[0].amount);
-    console.log("Transfers list: end");
-  };
+    setLoading(true);
+    const token = localStorage.getItem("tokenCookie");
+    axios
+      .get(`http://localhost:8080/transfers`, {
+        headers: { Authorization: "Bearer " + token },
+      })
+      .then(({ data }) => setResponseData(data))
+      // .then((res) => setResponseData(res.data))
+      .catch((err) => console.error(err))
+      .finally(() => setLoading(false)); // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/finally
+    // empty -> renders every time component Transfer is rerendered
+    // [] - renders only on init
+    // [variable] - renders only when variable changes/updates
+  }, []);
 
   return (
     <div className="page">
@@ -92,13 +71,14 @@ function Transfer() {
           <button className="button-cancel" onClick={handleOpenQuestionDeleteModal}>
             Delete
           </button>
-          <button onClick={getTransfers()}>Get Transfers </button>
+          {/* // <button onClick={() => getTransfers()}>Get Transfers </button> */}
+          {/* <button onClick={getTransfers}>Get Transfers</button> */}
           <button onClick={handleCreateTransferModal}>Create transfer </button>
         </div>
         <div className="body-content">
           <div className="account-inputs">
             <div className="table">
-              <table>
+              <table className="styled-table">
                 <thead>
                   <tr>
                     <th>Id</th>
@@ -112,9 +92,39 @@ function Transfer() {
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td>{responseData.amount}</td>
-                  </tr>
+                  {responseData.length ? (
+                    responseData
+                      .filter((item) => item.fromAccountId == localStorage.getItem("idCookie"))
+                      .map(
+                        ({
+                          id,
+                          title,
+                          amount,
+                          currency,
+                          fromAccountId,
+                          toAccountId,
+                          date,
+                          time,
+                        }) => (
+                          <tr key={id}>
+                            <td>{id}</td>
+                            <td>{title}</td>
+                            <td>{amount}</td>
+                            <td>{currency}</td>
+                            <td>{fromAccountId}</td>
+                            <td>{toAccountId}</td>
+                            <td>{date}</td>
+                            <td>{time}</td>
+                          </tr>
+                        ),
+                      )
+                  ) : (
+                    <tr>
+                      <td colSpan={8}>
+                        {loading ? "Spinner component here" : "No data available"}
+                      </td>
+                    </tr>
+                  )}
                 </tbody>
               </table>
             </div>

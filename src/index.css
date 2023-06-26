@@ -51,7 +51,16 @@
   margin: 20px;
   border-radius: 8px;
   justify-content: center;
-  align-items: center;
+}
+
+.account-body-content {
+  display: flex;
+  background-color: rgb(253, 192, 78);
+  padding: 20px;
+  max-width: auto;
+  margin: 20px;
+  border-radius: 8px;
+  justify-content: left;
 }
 
 /*BUTTONS*/
@@ -260,24 +269,31 @@ button:hover {
   position: absolute;
 }
 
-.myTable {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+/*TABLE*/
+.styled-table {
+  border-collapse: collapse;
+  margin: 25px 0;
+  font-size: 0.9em;
+  font-family: sans-serif;
+  min-width: 400px;
+  box-shadow: 0 0 20px black;
 }
 
-table {
-  border: 2px solid black;
-  width: 800px;
-  height: 200px;
+.styled-table th {
+  background-color: black;
+  text-align: left;
+  color: white;
+  padding: 12px 15px;
 }
 
-th {
-  border-bottom: 2px solid black;
-  color: green;
+.styled-table td {
+  padding: 12px 15px;
 }
 
-td {
-  text-align: center;
+.styled-table tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
+
+.styled-table tbody tr:nth-of-type(even) {
+  background-color: #f3f3f3;
 }
