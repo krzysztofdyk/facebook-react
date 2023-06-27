@@ -5,7 +5,7 @@ import Footer from "../../components/footer/Footer";
 import ChangePassword from "../../components/open/ChangePassword";
 import EditAccount from "../../components/open/EditAccount";
 import QuestionDelete from "../../components/open/QuestionDelete";
-import Word from "../account/Word";
+import DownloadProfile from "../../components/downloads/DownloadProfile";
 
 function Account() {
   const [openEditAccountModal, setEditAccountModal] = useState(false);
@@ -68,8 +68,8 @@ function Account() {
             Delete
           </button>
           <button onClick={handleOpenChangePasswordModal}>Change password </button>
+          <button onClick={DownloadProfile}>Download profile </button>
           <button onClick={handleOpenEditAccountModal}>Edit </button>
-          <button onClick={Word}>Download profile </button>
         </div>
         <div className="account-body-content">
           <div className="account-inputs">

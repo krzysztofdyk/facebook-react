@@ -4,6 +4,8 @@ import { useState, useEffect } from "react";
 import QuestionDelete from "../../components/open/QuestionDelete";
 import CreateTransfer from "../../components/open/CreateTransfer";
 import axios from "axios";
+import DownloadTransfers from "../../components/downloads/DownloadTransfers";
+import EditTransfer from "../../components/open/EditTransfer";
 
 function Transfer() {
   const [openCreateTransferModal, setCreateTransferModal] = useState(false);
@@ -73,6 +75,8 @@ function Transfer() {
           </button>
           {/* // <button onClick={() => getTransfers()}>Get Transfers </button> */}
           {/* <button onClick={getTransfers}>Get Transfers</button> */}
+          <button onClick={DownloadTransfers}>Download all transfers</button>
+          <button onClick={handleEditTransferModal}>Edit</button>
           <button onClick={handleCreateTransferModal}>Create transfer </button>
         </div>
         <div className="body-content">
@@ -130,6 +134,7 @@ function Transfer() {
             </div>
           </div>
         </div>
+        {openEditTarnsferModal && <EditTransfer closeModal={setEditTransferModal} />}
         {openCreateTransferModal && <CreateTransfer closeModal={setCreateTransferModal} />}
         {openQuestionDeleteModal && <QuestionDelete closeModal={setOpenQuestionDeleteModal} />}
       </div>

@@ -1,6 +1,6 @@
 import axios from "axios";
 
-function Word() {
+function DownloadProfile() {
   const idVisual = localStorage.getItem("idCookie");
   console.log("The file was downloaded.");
 
@@ -17,4 +17,4 @@ function Word() {
   downloadWord({ id: idVisual });
 }
 
-export default Word;
+export default DownloadProfile;
