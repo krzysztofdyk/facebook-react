@@ -205,6 +205,10 @@ button:hover {
   color: red;
 }
 
+.link:target {
+  color: green;
+}
+
 /*FOOTER*/
 .foobar {
   background-color: rgb(253, 192, 78);

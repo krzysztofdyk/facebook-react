@@ -2,23 +2,20 @@ import { useState } from "react";
 //import axios from "axios";
 
 function CreateTransfer(props) {
-  const [title, setTitle] = useState("pizza");
-  const [amount, setAmount] = useState("12");
-  const [currency, setCurrency] = useState("PLN");
-  const [toAccountId, setToAccountId] = useState("1");
+  const [title, setTitle] = useState("");
+  const [amount, setAmount] = useState("");
+  const [currency, setCurrency] = useState("");
+  const [toAccountId, setToAccountId] = useState("");
+
+  const token = localStorage.getItem("tokenCookie");
 
   const fetchSubmit = () => {
-    console.log(title, amount, currency, toAccountId);
-    console.log("Start transfer.");
-    console.log(`${props.id}`);
-
     const accountId = localStorage.getItem("idCookie");
-
     fetch(`http://localhost:8080/transfers/${accountId}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: "Bearer " + localStorage.getItem("tokenCookie"),
+        Authorization: "Bearer " + token,
       },
       body: JSON.stringify({
         title,
@@ -28,7 +25,8 @@ function CreateTransfer(props) {
       }),
     });
     props.closeModal(false);
-    console.log("End transfer.");
+    // eslint-disable-next-line no-restricted-globals
+    location.reload();
   };
 
   return (

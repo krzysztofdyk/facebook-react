@@ -6,10 +6,11 @@ import CreateTransfer from "../../components/open/CreateTransfer";
 import axios from "axios";
 import DownloadTransfers from "../../components/downloads/DownloadTransfers";
 import EditTransfer from "../../components/open/EditTransfer";
+import DeleteTransfer from "../../components/open/DeleteTransfer";
 
 function Transfer() {
   const [openCreateTransferModal, setCreateTransferModal] = useState(false);
-  const [openEditTarnsferModal, setEditTransferModal] = useState(false);
+  const [openEditTransferModal, setEditTransferModal] = useState(false);
   const [openQuestionDeleteModal, setOpenQuestionDeleteModal] = useState(false);
   const [responseData, setResponseData] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -125,7 +126,7 @@ function Transfer() {
                   ) : (
                     <tr>
                       <td colSpan={8}>
-                        {loading ? "Spinner component here" : "No data available"}
+                        {loading ? "Loading data.. just a minute " : "No data available"}
                       </td>
                     </tr>
                   )}
@@ -134,9 +135,9 @@ function Transfer() {
             </div>
           </div>
         </div>
-        {openEditTarnsferModal && <EditTransfer closeModal={setEditTransferModal} />}
+        {openEditTransferModal && <EditTransfer closeModal={setEditTransferModal} />}
         {openCreateTransferModal && <CreateTransfer closeModal={setCreateTransferModal} />}
-        {openQuestionDeleteModal && <QuestionDelete closeModal={setOpenQuestionDeleteModal} />}
+        {openQuestionDeleteModal && <DeleteTransfer closeModal={setOpenQuestionDeleteModal} />}
       </div>
       <div className="footer">
         <Footer />

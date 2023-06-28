@@ -16,7 +16,7 @@ function Account() {
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [city, setCity] = useState("");
-  const [id, setId] = useState(0);
+  const [id, setId] = useState("");
   const [balance, setBalance] = useState("");
 
   function handleOpenEditAccountModal() {

@@ -11,12 +11,14 @@ function EditTransfer(props) {
   const [date, setDate] = useState();
   const [time, setTime] = useState();
 
+  const token = localStorage.getItem("tokenCookie");
+
   const fetchAccount = () => {
     fetch(`http://localhost:8080/transfers/${id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
-        Authorization: "Bearer " + localStorage.getItem("tokenCookie"),
+        Authorization: "Bearer " + token,
       },
       body: JSON.stringify({
         id,
@@ -53,25 +55,25 @@ function EditTransfer(props) {
           <label> Currency </label>
           <input value={currency} onChange={(event) => setCurrency(event.target.value)} />
         </div>
-        <div className="open-input">
+        {/* <div className="open-input">
           <label>FromAccountId </label>
           <input value={fromAccountId} onChange={(event) => setFromAccountId(event.target.value)} />
-        </div>
+        </div> */}
         <div className="open-input">
           <label> ToAccountId</label>
           <input value={toAccountId} onChange={(event) => setToAccountId(event.target.value)} />
         </div>
-        <div className="open-input">
+        {/* <div className="open-input">
           <label> Date </label>
           <input value={date} onChange={(event) => setDate(event.target.value)} />
         </div>
         <div className="open-input">
           <label> Time </label>
           <input value={time} onChange={(event) => setTime(event.target.value)} />
-        </div>
+        </div> */}
       </div>
       <div className="open-buttons">
-        <button onClick={fetchAccount}>Save</button>
+        <button onClick={fetchAccount}>Send</button>
         <button className="button-cancel" onClick={() => props.closeModal(false)}>
           Cancel
         </button>
