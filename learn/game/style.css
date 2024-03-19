@@ -1,8 +1,5 @@
 body {
   background-color: black;
-  color: white;
-  font-size: 24;
-  font-weight: 400;
 }
 
 button {
@@ -13,13 +10,33 @@ button {
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 16px;
+  font-size: 40px;
+  color: white;
 }
 
-div {
+button:hover {
+  background-color: black;
+  box-shadow: none;
+}
+
+.box1 {
+  text-align: center;
   padding: 10px;
   margin: auto;
-  height: 100px;
+  height: auto;
+  width: 800px;
+  background-color: burlywood;
+  font-size: 44px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bolder;
+}
+
+.box2 {
+  display: flex;
+  flex-flow: column;
+  padding: 10px;
+  margin: auto;
+  height: 800px;
   width: 800px;
   background-color: brown;
 }
