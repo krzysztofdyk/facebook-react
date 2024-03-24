@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Calculator with FORM</title>
+  </head>
+  <body>
+    <!-- main container section  -->
+    <div class="container">
+      <form name="calc" action="" class="calculator">
+        <div class="display">
+          <input name="text" readonly />
+        </div>
+        <div class="buttonClick">
+          <div class="oneClass">
+            <span onclick="buttonValue(1)"><i>1</i></span>
+            <span onclick="buttonValue(2)"><i>2</i></span>
+            <span onclick="buttonValue(3)"><i>3</i></span>
+            <span class="clear" onclick="btnClear()"><i>C</i></span>
+          </div>
+          <div class="oneClass">
+            <span onclick="buttonValue(4)"><i>4</i></span>
+            <span onclick="buttonValue(5)"><i>5</i></span>
+            <span onclick="buttonValue(6)"><i>6</i></span>
+            <span onclick="btnPlus()"><i>+</i></span>
+          </div>
+          <div class="oneClass">
+            <span onclick="buttonValue(7)"><i>7</i></span>
+            <span onclick="buttonValue(8)"><i>8</i></span>
+            <span onclick="buttonValue(9)"><i>9</i></span>
+            <span onclick="btnMinus()"><i>-</i></span>
+          </div>
+          <div class="oneClass">
+            <span onclick="buttonValue(0)"><i>0</i></span>
+            <span onclick="btnProduct()"><i>*</i></span>
+            <span onclick="btnDivide()"><i>/</i></span>
+            <span class="equal" onclick="myResult()"><i>=</i></span>
+          </div>
+        </div>
+      </form>
+    </div>
+    <script src="main.js"></script>
+  </body>
+</html>

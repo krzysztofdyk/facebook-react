@@ -18,11 +18,13 @@ function paperMove() {
   computerChoose();
   console.log(`User move is: paper`);
 }
+
 function rockMove() {
   console.clear();
   computerChoose();
   console.log(`User move is: rock`);
 }
+
 function scissorsMove() {
   console.clear();
   computerChoose();
