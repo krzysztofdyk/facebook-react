@@ -1,11 +1,7 @@
 import axios from "axios";
 
 function DownloadProfile() {
-  const idVisual = localStorage.getItem("idCookie");
-  console.log("The file was downloaded.");
-
-  const downloadWord = ({ id }) => {
-    const token = localStorage.getItem("tokenCookie");
+  const downloadWord = ({ id }, { token }) => {
     axios.get(`http://localhost:8080/api/accounts/profile/${id}`, {
       headers: {
         "Content-Type": "application/json",
@@ -14,7 +10,12 @@ function DownloadProfile() {
     });
   };
 
-  downloadWord({ id: idVisual });
+  const idVisual = localStorage.getItem("idCookie");
+  const tokenVisual = localStorage.getItem("tokenCookie");
+
+  console.log("The file was downloaded.");
+
+  downloadWord({ id: idVisual }, { token: tokenVisual });
 }
 
 export default DownloadProfile;
