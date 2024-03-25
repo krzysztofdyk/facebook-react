@@ -5,7 +5,7 @@ function DownloadProfile() {
     axios.get(`http://localhost:8080/api/accounts/profile/${id}`, {
       headers: {
         "Content-Type": "application/json",
-        Authorization: "Bearer " + token,
+        Authorization: "Bearer " + { token },
       },
     });
   };
