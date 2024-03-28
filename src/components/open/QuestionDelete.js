@@ -4,9 +4,7 @@ function QuestionDelete({ closeModal }) {
   const navigate = useNavigate();
 
   const handleSubmit = () => {
-    console.log("Start");
     navigate("/logout", { replace: true });
-    console.log("End");
   };
 
   return (

@@ -5,16 +5,19 @@ function ChangePassword({ closeModal }) {
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
 
+  const url = "http://localhost:8080/api/accounts";
+  const httpOptions = {
+    method: "PUT",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      password,
+      repeatPassword,
+    }),
+  };
+
   const handleSubmit = () => {
     console.log(password, repeatPassword);
-    fetch("http://localhost:8080/api/accounts", {
-      method: "PUT",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        password,
-        repeatPassword,
-      }),
-    });
+    fetch(url, httpOptions);
     closeModal(false);
   };
 

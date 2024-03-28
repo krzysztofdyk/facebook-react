@@ -11,27 +11,27 @@ function Register({ closeModal }) {
   const [repeatPassword, setRepeatPassword] = useState("");
   const navigate = useNavigate();
 
+  const url = "http://localhost:8080/api/accounts";
+  const httpOptions = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      firstName,
+      lastName,
+      email,
+      city,
+      login,
+      password,
+      repeatPassword,
+    }),
+  };
+
   const handleSubmit = () => {
-    console.log(firstName, lastName, email, city, login, password);
-    console.log("Start register request.");
-    fetch("http://localhost:8080/api/accounts", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"       
-      },
-      body: JSON.stringify({
-        firstName,
-        lastName,
-        email,
-        city,
-        login,
-        password,
-        repeatPassword,
-      }),
-    });
+    fetch(url, httpOptions);
     closeModal(false);
-    //navigate("/kmd", { replace: true });
-    console.log("End register request.");
+    navigate("/kmd", { replace: true });
   };
 
   return (

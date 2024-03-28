@@ -6,29 +6,28 @@ function Login({ closeModal }) {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
+  const url = "http://localhost:8080/authenticate";
+  const httpOptions = {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      login,
+      password,
+    }),
+  };
+
   const handleSubmit = async () => {
-    console.log("Start login request: ", login, password);
     try {
-      const response = await fetch("http://localhost:8080/authenticate", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          login,
-          password,
-        }),
-      });
+      const response = await fetch(url, httpOptions);
       const json = await response.json();
       localStorage.setItem("tokenCookie", json.jwtTokenJava);
-      console.log(json.jwtToken);
       localStorage.setItem("loginCookie", json.loginJava);
-      console.log(json.id);
       localStorage.setItem("idCookie", json.idJava);
       closeModal(true);
       navigate("/kmd", { replace: true });
     } catch (err) {
       console.warn(err);
     }
-    console.log("End login request.");
   };
 
   return (

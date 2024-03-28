@@ -7,23 +7,25 @@ function EditAccount(props) {
   const [email, setEmail] = useState(props.email);
   const [city, setCity] = useState(props.city);
 
+  const url = `http://localhost:8080/api/accounts/${props.id}`;
+  const httpOptions = {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: "Bearer " + localStorage.getItem("tokenCookie"),
+    },
+    body: JSON.stringify({
+      firstName,
+      lastName,
+      email,
+      city,
+    }),
+  };
+
   const fetchAccount = () => {
-    console.log(firstName, lastName, email, city);
-    fetch(`http://localhost:8080/api/accounts/${props.id}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: "Bearer " + localStorage.getItem("tokenCookie"),
-      },
-      body: JSON.stringify({
-        firstName,
-        lastName,
-        email,
-        city,
-      }),
-    });
+    fetch(url, httpOptions);
     props.closeModal(false);
-    // eslint-disable-next-line no-restricted-globals
+    //eslint-disable-next-line no-restricted-globals
     location.reload();
   };
 

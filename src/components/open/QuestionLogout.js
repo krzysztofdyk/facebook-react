@@ -4,10 +4,8 @@ function QuestionLogout({ closeModal }) {
   const navigate = useNavigate();
 
   const handleSubmit = () => {
-    console.log("Start");
     navigate("/logout", { replace: true });
     localStorage.setItem("accountId", null);
-    console.log("End");
   };
 
   return (

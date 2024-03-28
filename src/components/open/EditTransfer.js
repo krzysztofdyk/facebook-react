@@ -12,25 +12,27 @@ function EditTransfer(props) {
   const [time, setTime] = useState();
 
   const token = localStorage.getItem("tokenCookie");
+  const url = `http://localhost:8080/transfers/${id}`;
+  const httpOptions = {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: "Bearer " + token,
+    },
+    body: JSON.stringify({
+      id,
+      title,
+      amount,
+      currency,
+      //fromAccountId,
+      //toAccountId,
+      //date,
+      //time,
+    }),
+  };
 
   const fetchAccount = () => {
-    fetch(`http://localhost:8080/transfers/${id}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: "Bearer " + token,
-      },
-      body: JSON.stringify({
-        id,
-        title,
-        amount,
-        currency,
-        //fromAccountId,
-        //toAccountId,
-        //date,
-        //time,
-      }),
-    });
+    fetch(url, httpOptions);
     props.closeModal(false);
     // eslint-disable-next-line no-restricted-globals
     location.reload();

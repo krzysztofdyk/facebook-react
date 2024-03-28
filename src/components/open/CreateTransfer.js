@@ -8,22 +8,25 @@ function CreateTransfer(props) {
   const [toAccountId, setToAccountId] = useState("");
 
   const token = localStorage.getItem("tokenCookie");
+  const accountId = localStorage.getItem("idCookie");
+
+  const url = `http://localhost:8080/transfers/${accountId}`;
+  const httpOptions = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: "Bearer " + token,
+    },
+    body: JSON.stringify({
+      title,
+      amount,
+      currency,
+      toAccountId,
+    }),
+  };
 
   const fetchSubmit = () => {
-    const accountId = localStorage.getItem("idCookie");
-    fetch(`http://localhost:8080/transfers/${accountId}`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: "Bearer " + token,
-      },
-      body: JSON.stringify({
-        title,
-        amount,
-        currency,
-        toAccountId,
-      }),
-    });
+    fetch(url, httpOptions);
     props.closeModal(false);
     // eslint-disable-next-line no-restricted-globals
     location.reload();

@@ -5,18 +5,20 @@ function DeleteTransfer(props) {
   const [id, setId] = useState();
 
   const token = localStorage.getItem("tokenCookie");
+  const url = `http://localhost:8080/transfers/${id}`;
+  const httpOptions = {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: "Bearer " + token,
+    },
+    body: JSON.stringify({
+      id,
+    }),
+  };
 
   const fetchTransfer = () => {
-    fetch(`http://localhost:8080/transfers/${id}`, {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: "Bearer " + token,
-      },
-      body: JSON.stringify({
-        id,
-      }),
-    });
+    fetch(url, httpOptions);
     props.closeModal(false);
     // eslint-disable-next-line no-restricted-globals
     location.reload();
