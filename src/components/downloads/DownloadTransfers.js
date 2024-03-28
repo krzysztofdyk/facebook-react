@@ -2,10 +2,9 @@ import axios from "axios";
 
 function DownloadTransfers() {
   const idVisual = localStorage.getItem("idCookie");
-  console.log("The file was downloaded.");
+  const token = localStorage.getItem("tokenCookie");
 
   const downloadWord = ({ id }) => {
-    const token = localStorage.getItem("tokenCookie");
     axios.get(`http://localhost:8080/api/accounts/accounts-history/${id}`, {
       headers: {
         "Content-Type": "application/json",
@@ -15,6 +14,7 @@ function DownloadTransfers() {
   };
 
   downloadWord({ id: idVisual });
+  console.log("The file was downloaded.");
 }
 
 export default DownloadTransfers;
